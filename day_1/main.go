@@ -70,16 +70,16 @@ func partOne(input *os.File) int {
 }
 
 func partTwo(input *os.File) int {
-	characterWords := []CharacterWord{
-		CharacterWord{"one", 1},
-		CharacterWord{"two", 2},
-		CharacterWord{"three", 3},
-		CharacterWord{"four", 4},
-		CharacterWord{"five", 5},
-		CharacterWord{"six", 6},
-		CharacterWord{"seven", 7},
-		CharacterWord{"eight", 8},
-		CharacterWord{"nine", 9},
+	characterWords := []*CharacterWord{
+		&CharacterWord{"one", 1},
+		&CharacterWord{"two", 2},
+		&CharacterWord{"three", 3},
+		&CharacterWord{"four", 4},
+		&CharacterWord{"five", 5},
+		&CharacterWord{"six", 6},
+		&CharacterWord{"seven", 7},
+		&CharacterWord{"eight", 8},
+		&CharacterWord{"nine", 9},
 	}
 
 	sc := bufio.NewScanner(input)

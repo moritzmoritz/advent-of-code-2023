@@ -13,11 +13,6 @@ type Digit struct {
 	value int
 }
 
-type CharacterWord struct {
-	stringValue string
-	value       int
-}
-
 func main() {
 	input, er := os.Open("./input.txt")
 
@@ -70,17 +65,7 @@ func partOne(input *os.File) int {
 }
 
 func partTwo(input *os.File) int {
-	characterWords := []*CharacterWord{
-		&CharacterWord{"one", 1},
-		&CharacterWord{"two", 2},
-		&CharacterWord{"three", 3},
-		&CharacterWord{"four", 4},
-		&CharacterWord{"five", 5},
-		&CharacterWord{"six", 6},
-		&CharacterWord{"seven", 7},
-		&CharacterWord{"eight", 8},
-		&CharacterWord{"nine", 9},
-	}
+	characterWords := []string{"one", "two", "three", "four", "five", "six", "seven", "eight", "nine"}
 
 	sc := bufio.NewScanner(input)
 
@@ -90,12 +75,12 @@ func partTwo(input *os.File) int {
 
 		line := sc.Text()
 
-		for _, word := range characterWords {
+		for wordIndex, word := range characterWords {
 			indexes := make([]int, 0)
 
 			// Find all indexes of the word
 			for i := 0; ; {
-				index := strings.Index(line[i:], word.stringValue)
+				index := strings.Index(line[i:], word)
 				if index == -1 {
 					break
 				}
@@ -105,7 +90,7 @@ func partTwo(input *os.File) int {
 			}
 
 			for _, index := range indexes {
-				digits = append(digits, Digit{index, word.value})
+				digits = append(digits, Digit{index, wordIndex + 1})
 			}
 		}
 

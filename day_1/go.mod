@@ -1,3 +1,3 @@
-module github.com/moritzmoritz/advent-of-code-2023/day1
+module github.com/moritzmoritz/advent-of-code/day1
 
 go 1.21.0
